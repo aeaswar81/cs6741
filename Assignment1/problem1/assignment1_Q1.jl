@@ -13,4 +13,4 @@ for i in N
     push!(avg_list,total_sum/i)
 end
 print(avg_list)
-plot(N,avg_list)
+plot(N,avg_list,title="Average vs N",xlabel="N",ylabel="Average")
