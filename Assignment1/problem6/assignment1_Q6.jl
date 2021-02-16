@@ -1,6 +1,6 @@
-p=0.6
+p=0.3
 count=0
-for _ in 1:10000
+for _ in 1:100000
     balance=10
     for days in 1:20
         if rand()<p
@@ -13,10 +13,11 @@ for _ in 1:10000
         global count+=1
     end 
 end
-count/=10000
-print(count)
+count/=100000
+println(count)
 using Distributions
-b=Binomial(20, 0.6)
+b=Binomial(20, 0.3)
+println(pdf(b,2))
 a=cdf(b,9)
-print(1-a)
+println(1-a)
 

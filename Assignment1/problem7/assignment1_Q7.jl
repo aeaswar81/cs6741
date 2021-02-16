@@ -1,6 +1,6 @@
-p=0.3
+p=0.6
 count=0
-for _ in 1:10000
+for _ in 1:100000
     balance=10
     for days in 1:20
         if rand()<p
@@ -15,6 +15,6 @@ for _ in 1:10000
     end
 
 end
-count/=10000
+count/=100000
 print(count)
 
