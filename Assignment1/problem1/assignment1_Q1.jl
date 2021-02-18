@@ -1,16 +1,17 @@
-using Plots
+using Plots 
+using Random
 pyplot()
-#Fix a range of values for N
-N=collect(10:10:10000)
-#Empty array to store the averages  
-avg_list=[]
+#Empty array to store the Mean
+mean_list=[]
+#setting the seed 
 Random.seed!(1)
-for i in N
-    total_sum=0
-    for _ in 1:i
-        total_sum=total_sum+rand(Int)
-    end
-    push!(avg_list,total_sum/i)
+#initialize the sum to zero
+total_sum=0
+for i in 1:1000 #1000 random integers
+    global total_sum=total_sum+rand(Int) #add Integers randomly 
+    #storing the mean
+    push!(mean_list,total_sum/i)
 end
-print(avg_list)
-plot(N,avg_list,title="Average vs N",xlabel="N",ylabel="Average")
+#plot and save the figure
+plot(1:1000,mean_list,title="Mean vs N",xlabel="N",ylabel="Mean")
+savefig("Q1.png")

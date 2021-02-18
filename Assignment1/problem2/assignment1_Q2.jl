@@ -1,30 +1,36 @@
 using StatsBase
+using Random
+using Plots
+pyplot()
 deck=collect(1:1:52)
-jack=[1,2,3,4]
+jack=[1,2,3,4]   #say the cards numbered 1,2,3,4 are jacks
 Random.seed!(1)
+#array to store the frequency of occurence of n from 0 to 5
 count=[0,0,0,0,0,0]
-for _ in 1:100000
-    shuffle!(deck)
-    local five_cards=sample(deck,5,replace=true)
-    jack_count=0
+#With Replacement 
+for _ in 1:100000 #conduct the experiment 1 lakh times
+    shuffle!(deck) #shuffle the deck 
+    local five_cards=sample(deck,5,replace=true) #randomly pick 5 cards with replacement
+    jack_count=0  #to keep track of number of jacks
     for i in five_cards
-        if i in jack
+        if i in jack  #if the any among the 5 is a jack increase the count
             jack_count+=1
         end
     end
-    if jack_count==0
-        count[6]+=1
-    else
+    if jack_count==0  #keep a count for n=0 jacks
+        count[6]+=1 
+    else                # if there is a jack 
         count[jack_count]+=1
     end
-    if jack_count==5
-        print(five_cards)
-    end
 end
-print(count)
 count=count/100000
-#with replacement binomial distribution 
-#without replacement hypergeometric distribution
+println("With replacement")
+println("n=",0," p=",count[6])
+for i in 1:length(count)-1
+    println("n=",i," p=",count[i])
+end
+
+#Without replacement 
 count=[0,0,0,0,0,0]
 for _ in 1:100000
     shuffle!(deck)
@@ -44,7 +50,10 @@ for _ in 1:100000
         print(five_cards)
     end
 end
-print(count)
 count=count/100000
-
+println("Without replacement")
+println("n=",0," p=",count[6])
+for i in 1:length(count)-1
+    println("n=",i," p=",count[i])
+end
     
