@@ -1,6 +1,5 @@
 using StatsBase
 using Random
-using Plots
 pyplot()
 deck=collect(1:1:52)
 jack=[1,2,3,4]   #say the cards numbered 1,2,3,4 are jacks
@@ -8,7 +7,7 @@ Random.seed!(1)
 #array to store the frequency of occurence of n from 0 to 5
 count=[0,0,0,0,0,0]
 #With Replacement 
-for _ in 1:100000 #conduct the experiment 1 lakh times
+for _ in 1:1000000 #conduct the experiment 1 lakh times
     shuffle!(deck) #shuffle the deck 
     local five_cards=sample(deck,5,replace=true) #randomly pick 5 cards with replacement
     jack_count=0  #to keep track of number of jacks
@@ -23,16 +22,16 @@ for _ in 1:100000 #conduct the experiment 1 lakh times
         count[jack_count]+=1
     end
 end
-count=count/100000
+count=count/1000000
 println("With replacement")
-println("n=",0," p=",count[6])
+println("n=",0," Probability=",count[6])
 for i in 1:length(count)-1
-    println("n=",i," p=",count[i])
+    println("n=",i," Probability=",count[i])
 end
 
 #Without replacement 
 count=[0,0,0,0,0,0]
-for _ in 1:100000
+for _ in 1:1000000
     shuffle!(deck)
     local five_cards=sample(deck,5,replace=false)
     jack_count=0
@@ -50,10 +49,10 @@ for _ in 1:100000
         print(five_cards)
     end
 end
-count=count/100000
+count=count/1000000
 println("Without replacement")
-println("n=",0," p=",count[6])
+println("n=",0," Probability=",count[6])
 for i in 1:length(count)-1
-    println("n=",i," p=",count[i])
+    println("n=",i," Probability=",count[i])
 end
     
