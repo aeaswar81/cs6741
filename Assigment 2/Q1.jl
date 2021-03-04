@@ -12,5 +12,5 @@ for i in 1:length(a)
 	push!(df1,(a[i],rand(1:500),rand(1:500),rand(1:500),rand(1:500),rand(1:500),rand(1:500)))
 end	
 print(df1)
-df1Stacked=stack(df1,2:7)
+df1Stacked=sort(stack(df1,2:7))
 print(df1Stacked)
