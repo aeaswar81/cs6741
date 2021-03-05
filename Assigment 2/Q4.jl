@@ -1,6 +1,7 @@
 using HTTP
 using JSON
-using JSONTables
+using DataFrames
+using Dates
 r = HTTP.request("GET", "https://api.covid19india.org/data.json")
 a=(String(r.body))
 b=JSON.parse(a)

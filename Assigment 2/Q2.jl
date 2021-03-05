@@ -1,7 +1,6 @@
 #Using VSCode 
 using DataFrames
 using Random
-using CategoricalArrays
 df1=DataFrame("ID" => String[], "year" => Int[],"month"=>Int[],"element" => String[])
 
 for i in 1:30
