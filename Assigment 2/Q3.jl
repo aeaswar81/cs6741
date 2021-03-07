@@ -3,6 +3,7 @@
 using DataFrames
 using Random
 using Dates
+Random.seed!(1)
 #Create an empty dataframe
 df1=DataFrame("year" => Int[], "artist" => String[],"time" => String[],"track"=>String[],"Date"=> Date[],"week" => Int[],"rank"=>Int[])
 #values of track artist and time stored in an array
@@ -21,7 +22,7 @@ end
 println("Untidy Data")
 show(df1)
 #select the unique tracks , this forms the table 1
-df2=unique(df1[:,[:year,:artist,:track,:time]])
+df2=unique(df1[:,[:artist,:track,:time]])
 #give an index for this table 
 insertcols!(df2, 1, :id => 1:size(df2)[1])
 #inner join this table with the older table with track as key,this gives the second table
@@ -29,5 +30,7 @@ join_table=innerjoin(df2[:,[:id,:track]],df1[:,[:track,:Date,:rank]],on=:track)
 # drop the track column since it is not required 
 df3=select(join_table,Not(:track))
 println("\n Tidy data")
+println("Table 1")
 show(df2)
+println("\nTable 2")
 show(df3)

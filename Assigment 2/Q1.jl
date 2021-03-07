@@ -3,6 +3,7 @@
 #import libraries
 using DataFrames
 using Random
+Random.seed!(1)
 #Create the empty Dataframe
 df1=DataFrame("Religion" => String[], "<10K\$" => Int[],"\$10-20K"=>Int[],"\$20-30K"=>Int[],"\$30-40K"=>Int[],"\$40-50K"=>Int[],"\$50-75K"=>Int[])
 #names of religions

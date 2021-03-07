@@ -2,6 +2,7 @@
 #import the libraries
 using DataFrames
 using Random
+Random.seed!(1)
 #create and empty dataframe
 df1=DataFrame("ID" => String[], "year" => Int[],"month"=>Int[],"element" => String[])
 #create the columns from 1 to 30 
