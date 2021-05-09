@@ -6,11 +6,11 @@ using Random
 using StatsPlots
 Random.seed!(1)
 pyplot()
-Dist=Uniform(0,1)
+#Dist=Uniform(0,1)
 #uncomment these to check
 #Dist=Binomial(60,0.01)
 #Dist=Binomial(60,0.5)
-#Dist=Chisq(3)
+Dist=Chisq(3)
 mu=mean(Dist)
 stdclt=std(Dist)
 # for different sample sizes, run a loop
@@ -28,12 +28,12 @@ end
 s=s./sqrt(j) #divide by sqrt (n)
 # check within limits 0.1
 #kurtosis of standard normal dist is 3 hence taking difference with 3
-if(abs(moment(s,1))<0.1 && abs(moment(s,2)-1)<0.1 && abs(moment(s,3))<0.1 && abs(moment(s,4)-3)<0.1)  
+if(abs(moment(s,1))<=0.1 && abs(moment(s,2)-1)<=0.1 && abs(moment(s,3))<=0.1 && abs(moment(s,4)-3)<=0.1)  
     println("The minimum sample size is ",j)
     plt=density(s,label="approximation")
     plot!(plt,Normal(0,1),label="standard Normal")
     display(plt)
-    savefig("4a.png")
+    savefig("4d.png")
     break
 end
 
